@@ -40,7 +40,7 @@ I've included a get_timezone_with_latitude_longitude.api.php file, that allows y
 
             // Make the request
             current_request = $.ajax({
-                url: "get_timezone_with_latitude_longitude.api.php",
+                url: "get_location_time_with_latitude_longitude.api.php",
                 data: {
                     latitude: latitude,
                     longitude: longitude
