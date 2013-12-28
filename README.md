@@ -3,6 +3,8 @@ PHP-Timezone
 
 A small php script that can convert a lat/long coordinate pair into the time at that location.
 
+-- Uses http://www.earthtools.org 's timezone tool. My project is basically a wrapper for that.
+
 Class PHPTimezone_Location
 
 Represents a location - Given a latitude and longitude, this object holds data about the time at that location.
