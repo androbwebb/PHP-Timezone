@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP-Timezone | Example</title>
+
+    <!--jQuery-->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!--Foundation CSS framework. Easy.-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.0/css/foundation.css"/>
+
+
+    <!--THE GOOD STUFF-->
+    <script type="text/javascript">
+
+        // Feel free to just drag and drop this function (and change the url path)
+        var current_request ;
+        function get_time_zone(callback){
+
+            // Collection inputs
+            var latitude    = $('input#latitude').val();
+            var longitude   = $('input#longitude').val();
+
+            // If we're already requesting, lets abort
+            if(current_request)
+                current_request.abort();
+
+            // Make the request
+            current_request = $.ajax({
+                url: "get_timezone_with_latitude_longitude.api.php",
+                data: {
+                    latitude: latitude,
+                    longitude: longitude
+                },
+                dataType: 'json',
+                success: function(data){
+                    callback(data);
+                }
+            });
+        }
+
+        function demo_callback(data){
+            $('#timezone_name').html(data.timezone_name);
+        }
+
+
+
+        // Onload
+        $(function(){
+            var do_it = function(){
+                // Instead of putting a spinner, or other indicator of loading, ill just put some dots.
+                $('#timezone_name').html('.........');
+                get_time_zone(demo_callback);
+            };
+
+            $('input').keyup(do_it);
+
+            $('.button').click(do_it);
+
+            // Call it when we start, in case browser has saved values.
+            do_it();
+        })
+    </script>
+</head>
+<body>
+
+<div class="row" id="content">
+
+    <!--Header-->
+    <h1 class="text-center">
+        PHP-Timezone Example
+    </h1>
+
+
+    <!--Input form-->
+    <div class="small-12 large-12 columns">
+        <form class="" style="margin-top: 100px;">
+
+            <div class="columns small-12 large-12">
+                <label for="latitude">Latitude</label>
+                <input type="text" name="latitude" id="latitude" placeholder="40.6700" value="40.6700"/>
+            </div>
+
+            <div class="columns small-12 large-12">
+                <label for="longitude">Longitude</label>
+                <input type="text" name="longitude" id="longitude" placeholder="-73.9400" value="-73.9400"/>
+            </div>
+
+            <div class="columns small-12 large-12">
+                <div class="button">
+                    Submit
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!--Result-->
+    <div class="columns small-12 large-12" style="margin-top: 50px;">
+        <h3>
+            Timezone: <span id="timezone_name">America/New_York</span>
+        </h3>
+    </div>
+</div>
+</body>
+</html>
