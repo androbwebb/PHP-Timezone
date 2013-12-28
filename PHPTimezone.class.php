@@ -123,4 +123,4 @@ class PHPTimezone_Location {
 //$lat = 40.6700 ;
 //$lng = -73.9400;
 //$z = new PHPTimezone_Location($lat,$lng) ;
-//echo json_encode($z->get_data()) ;
+//print_r($z->get_data()) ;

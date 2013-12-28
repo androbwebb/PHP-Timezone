@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/PHPTimezone.class.php' ;
+require_once 'PHPTimezone.class.php' ;
 
 
 /**
@@ -26,5 +26,6 @@ echo json_encode(get_timezone_with_latitude_longitude($_REQUEST['latitude'],$_RE
  */
 function get_location_time_with_latitude_longitude($latitude, $longitude){
     $z = new PHPTimezone_Location($latitude,$longitude) ;
+    print_r($z->get_data());
     return $z->get_data() ;
 }
