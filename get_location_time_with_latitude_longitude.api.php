@@ -24,7 +24,7 @@ echo json_encode(get_timezone_with_latitude_longitude($_REQUEST['latitude'],$_RE
  * @param $longitude
  * @return array
  */
-function get_timezone_with_latitude_longitude($latitude, $longitude){
+function get_location_time_with_latitude_longitude($latitude, $longitude){
     $z = new PHPTimezone_Location($latitude,$longitude) ;
     return $z->get_data() ;
 }
