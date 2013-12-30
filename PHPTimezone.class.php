@@ -1,7 +1,5 @@
 <?php
 
-
-
 class PHPTimezone_Location {
 
     // Some variables
