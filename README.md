@@ -23,37 +23,7 @@ Retrievable information:
 +  Timezone Name
   
 #### API
-I've included a get_timezone_with_latitude_longitude.api.php file, that allows you to quickly write make some AJAX calls without dealing with my code.
 
-###### JS
-```javascript
-        var current_request ;
-        function get_time_zone(callback){
-
-            // Collection inputs
-            var latitude    = $('input#latitude').val();
-            var longitude   = $('input#longitude').val();
-
-            // If we're already requesting, lets abort
-            if(current_request)
-                current_request.abort();
-
-            // Make the request
-            current_request = $.ajax({
-                url: "get_location_time_with_latitude_longitude.api.php",
-                data: {
-                    latitude: latitude,
-                    longitude: longitude
-                },
-                dataType: 'json',
-                success: function(data){
-                    callback(data);
-                }
-            });
-        }
-```
-
-#### PHP
 ```php
 require_once 'PHPTimezone.class.php' ;
 
